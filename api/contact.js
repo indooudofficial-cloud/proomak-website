@@ -7,6 +7,10 @@ export default async function handler(req, res) {
 
   const { first_name, last_name, email, subject, message } = req.body;
 
+  // Temporary debug logs (remove after testing)
+  console.log('ZOHO_USER:', process.env.ZOHO_USER);
+  console.log('ZOHO_PASS:', process.env.ZOHO_PASS ? 'Loaded' : 'Missing');
+
   // Configure transporter with Zoho SMTP
   let transporter = nodemailer.createTransport({
     host: 'smtp.zoho.com',
