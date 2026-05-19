@@ -758,8 +758,13 @@
     if (en.isIntersecting) { en.target.classList.add('revealed'); obs.unobserve(en.target); }
   }), { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.product-card,.capability-item,.contact-card').forEach(el => obs.observe(el));
+<<<<<<< HEAD
 
   /* ══ CONTACT FORM SUBMIT HANDLER ════════════════════════════════ */
+=======
+    
+    /* ══ CONTACT FORM SUBMIT HANDLER ════════════════════════════════ */
+>>>>>>> 7ee930c402c50d518c7c838aefe995e2db94c6b4
   document.getElementById('contactForm').addEventListener('submit', async function (e) {
   e.preventDefault();
 
