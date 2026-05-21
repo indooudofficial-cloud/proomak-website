@@ -1,14 +1,12 @@
-import nodemailer from "nodemailer";
+const nodemailer = require("nodemailer");
 
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
   try {
     if (req.method !== "POST") {
       return res.status(405).json({ message: "Method not allowed" });
     }
 
-    const body = typeof req.body === "string" ? JSON.parse(req.body) : req.body;
-
-    const { first_name, last_name, email, subject, message } = body || {};
+    const { first_name, last_name, email, subject, message } = req.body || {};
 
     if (!process.env.ZOHO_USER || !process.env.ZOHO_PASS) {
       return res.status(500).json({
@@ -17,7 +15,7 @@ export default async function handler(req, res) {
       });
     }
 
-    let transporter = nodemailer.createTransport({
+    const transporter = nodemailer.createTransport({
       host: "smtp.zoho.com",
       port: 465,
       secure: true,
@@ -54,4 +52,4 @@ Message: ${message}
       error: error.message
     });
   }
-}
+};
